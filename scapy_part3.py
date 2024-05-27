@@ -21,12 +21,13 @@ def tcpSynPacket(target, source, destinationPort):
     logResponse(response)
 
 if __name__ == "__main__":
-    
-    print(f"{terminalColors.TerminalColors.BOLD}Scapy, Part 3...{terminalColors.TerminalColors.END}")
-    target = input(f"{terminalColors.TerminalColors.OKGREEN} Enter the target IP address: {terminalColors.TerminalColors.END} ")
-    source = input(f"{terminalColors.TerminalColors.OKGREEN} Enter the source IP address: {terminalColors.TerminalColors.END} ")
-    destinationPort = int(input(f"{terminalColors.TerminalColors.OKGREEN} Enter the destination port : {terminalColors.TerminalColors.END} "))
-    
-    icmpEchoRequest(target)
-    tcpSynPacket(target, source, destinationPort)
-
+    try:
+        print(f"{terminalColors.TerminalColors.BOLD}Scapy, Part 3...{terminalColors.TerminalColors.END}")
+        target = input(f"{terminalColors.TerminalColors.OKGREEN} Enter the target IP address: {terminalColors.TerminalColors.END} ")
+        source = input(f"{terminalColors.TerminalColors.OKGREEN} Enter the source IP address: {terminalColors.TerminalColors.END} ")
+        destinationPort = int(input(f"{terminalColors.TerminalColors.OKGREEN} Enter the destination port : {terminalColors.TerminalColors.END} "))
+        
+        icmpEchoRequest(target)
+        tcpSynPacket(target, source, destinationPort)
+    except ValueError:
+        print("Invalid input provided.")
