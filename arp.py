@@ -28,7 +28,7 @@ if __name__ == "__main__":
     routerMAC = findMac(routerIP)
     
     print(f"{terminalColors.TerminalColors.OKBLUE}Target MAC: {targetMAC}{terminalColors.TerminalColors.END}")
-    print(f"{terminalColors.TerminalColors.OKBLUE}Gateway MAC: {routerMAC}{terminalColors.TerminalColors.END}")
+    print(f"{terminalColors.TerminalColors.OKBLUE}Router MAC: {routerMAC}{terminalColors.TerminalColors.END}")
     
     arpSpoofing(targetIP, routerIP, targetMAC, attackMAC)  
     arpSpoofing(routerIP, targetIP, routerMAC, attackMAC)  
